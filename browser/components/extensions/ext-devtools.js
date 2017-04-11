@@ -10,7 +10,7 @@
  */
 
 XPCOMUtils.defineLazyModuleGetter(this, "gDevTools",
-                                  "resource://devtools/client/framework/gDevTools.jsm");
+                                  "resource://gre/modules/DevToolsProvider.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "Task",
                                   "resource://gre/modules/Task.jsm");
 
@@ -255,6 +255,7 @@ initDevTools = function() {
   if (devToolsInitialized) {
     return;
   }
+
 
   /* eslint-disable mozilla/balanced-listeners */
   // Create a devtools page context for a new opened toolbox,
