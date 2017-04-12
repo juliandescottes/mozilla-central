@@ -7,13 +7,14 @@ this.EXPORTED_SYMBOLS = [
   "gDevToolsBrowser",
 ];
 
-let _gDevTools, _gDevToolsBrowser;
+let _gDevTools, _gDevToolsBrowser, gDevToolsShim;
 
 this.DevToolsProvider = {
   // Should be called by the devtools addon on startup()
   register: function (gDevTools, gDevToolsBrowser) {
     _gDevTools = gDevTools;
     _gDevToolsBrowser = gDevToolsBrowser;
+    gDevToolsShim.attachAllEvents();
   },
 
   // Should be called by the devtools addon on shutdown()
@@ -72,10 +73,16 @@ this.gDevTools = {
     this.listeners.push([event, listener]);
   },
 
-  _attachAllEvents: function () {
+  attachAllEvents: function () {
+    dump("[DevToolsProvider] attachAllEvents\n");
     for (let [event, listener] of this.listeners) {
+      dump("[DevToolsProvider] attachAllEvents: attaching " + event + "\n");
       _gDevTools.on(event, listener);
     }
+
+    _gDevTools.on("toolbox-created", () => {
+      dump("[DevToolsProvider] received toolbox-created event\n");
+    })
 
     this.listeners = [];
   }
@@ -88,6 +95,8 @@ gDevToolsMethods.forEach(name => {
     }
   };
 });
+
+gDevToolsShim = this.gDevTools;
 
 /**
  * Exposing a separate gDevToolsBrowser really depends on how we implement adding the
