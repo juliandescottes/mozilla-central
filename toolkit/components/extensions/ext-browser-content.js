@@ -11,14 +11,14 @@ XPCOMUtils.defineLazyModuleGetter(this, "clearTimeout",
                                   "resource://gre/modules/Timer.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "NetUtil",
                                   "resource://gre/modules/NetUtil.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "require",
-                                  "resource://devtools/shared/Loader.jsm");
+// XPCOMUtils.defineLazyModuleGetter(this, "require",
+//                                   "resource://devtools/shared/Loader.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "setTimeout",
                                   "resource://gre/modules/Timer.jsm");
 
-XPCOMUtils.defineLazyGetter(this, "colorUtils", () => {
-  return require("devtools/shared/css/color").colorUtils;
-});
+// XPCOMUtils.defineLazyGetter(this, "colorUtils", () => {
+//   return require("devtools/shared/css/color").colorUtils;
+// });
 
 Cu.import("resource://gre/modules/ExtensionUtils.jsm");
 const {
@@ -213,7 +213,8 @@ const BrowserListener = {
       result = {height, detail};
     } else {
       let background = doc.defaultView.getComputedStyle(body).backgroundColor;
-      let bgColor = colorUtils.colorToRGBA(background);
+      let bgColor = { r: 0, g: 0, b: 0, a: 1};
+        // colorUtils.colorToRGBA(background);
       if (bgColor.a !== 1) {
         // Ignore non-opaque backgrounds.
         background = null;
