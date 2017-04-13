@@ -24,13 +24,6 @@ this.DevToolsProvider = {
   },
 
   /**
-   * Check if the devtools addon is currently available.
-   */
-  isAvailable: function () {
-    return _gDevTools && _gDevToolsBrowser;
-  },
-
-  /**
    * Bootstrap devtools addon installation wizard.
    */
   install: function () {
@@ -85,7 +78,14 @@ this.gDevTools = {
     })
 
     this.listeners = [];
-  }
+  },
+
+  /**
+   * Check if the devtools addon is currently available.
+   */
+  isInstalled: function () {
+    return _gDevTools && _gDevToolsBrowser;
+  },
 };
 
 gDevToolsMethods.forEach(name => {

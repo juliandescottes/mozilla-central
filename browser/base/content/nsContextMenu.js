@@ -12,7 +12,8 @@ Components.utils.import("resource://gre/modules/BrowserUtils.jsm");
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
-
+XPCOMUtils.defineLazyModuleGetter(this, "gDevTools",
+                                  "resource://gre/modules/DevToolsProvider.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "LoginHelper",
   "resource://gre/modules/LoginHelper.jsm");
 
@@ -249,13 +250,16 @@ nsContextMenu.prototype = {
                        this.onImage || this.onCanvas ||
                        this.onVideo || this.onAudio ||
                        this.onLink || this.onTextInput);
-    var showInspect = !this.onSocial && gPrefService.getBoolPref("devtools.inspector.enabled");
-    this.showItem("context-viewsource", shouldShow);
-    this.showItem("context-viewinfo", shouldShow);
-    this.showItem("inspect-separator", showInspect);
-    this.showItem("context-inspect", showInspect);
 
     this.showItem("context-sep-viewsource", shouldShow);
+    this.showItem("context-viewsource", shouldShow);
+    this.showItem("context-viewinfo", shouldShow);
+
+    var showInspect = gDevTools.isInstalled()
+                      && !this.onSocial
+                      && gPrefService.getBoolPref("devtools.inspector.enabled");
+    this.showItem("inspect-separator", showInspect);
+    this.showItem("context-inspect", showInspect);
 
     // Set as Desktop background depends on whether an image was clicked on,
     // and only works if we have a shell service.
