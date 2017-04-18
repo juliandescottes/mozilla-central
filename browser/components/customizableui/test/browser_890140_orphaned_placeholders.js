@@ -27,11 +27,11 @@ add_task(function*() {
   let placements = getAreaWidgetIds(CustomizableUI.AREA_PANEL);
 
   assertAreaPlacements(CustomizableUI.AREA_PANEL, placements);
-  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholders before exiting");
+  is(getVisiblePlaceholderCount(panel), 3, "Should only have 3 visible placeholders before exiting");
 
   yield endCustomizing();
   yield startCustomizing();
-  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholders after re-entering");
+  is(getVisiblePlaceholderCount(panel), 3, "Should only have 3 visible placeholders after re-entering");
 
   if (isInDevEdition()) {
     CustomizableUI.addWidgetToArea("developer-button", CustomizableUI.AREA_NAVBAR, 2);
@@ -65,11 +65,11 @@ add_task(function*() {
 
   ok(!CustomizableUI.inDefaultState, "Should not be in default state.");
 
-  is(getVisiblePlaceholderCount(panel), 1, "Should only have 1 visible placeholder before exiting");
+  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholder before exiting");
 
   yield endCustomizing();
   yield startCustomizing();
-  is(getVisiblePlaceholderCount(panel), 1, "Should only have 1 visible placeholder after re-entering");
+  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholder after re-entering");
 
   let palette = document.getElementById("customization-palette");
   simulateItemDrag(btn, palette);
@@ -96,8 +96,8 @@ add_task(function*() {
   // Remove the buttons to satisfy that. (bug 1229236)
   removeNonOriginalButtons();
 
-  let btn = document.getElementById("add-ons-button");
-  let btn2 = document.getElementById("developer-button");
+  let btn = document.getElementById("preferences-button");
+  let btn2 = document.getElementById("add-ons-button");
   let panel = document.getElementById(CustomizableUI.AREA_PANEL);
   let palette = document.getElementById("customization-palette");
   let placements = getAreaWidgetIds(CustomizableUI.AREA_PANEL);
@@ -108,11 +108,11 @@ add_task(function*() {
 
   assertAreaPlacements(CustomizableUI.AREA_PANEL, placementsAfterAppend);
   ok(!CustomizableUI.inDefaultState, "Should no longer be in default state.");
-  is(getVisiblePlaceholderCount(panel), 1, "Should only have 1 visible placeholder before exiting");
+  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholder before exiting");
 
   yield endCustomizing();
   yield startCustomizing();
-  is(getVisiblePlaceholderCount(panel), 1, "Should only have 1 visible placeholder after re-entering");
+  is(getVisiblePlaceholderCount(panel), 2, "Should only have 2 visible placeholder after re-entering");
 
   simulateItemDrag(btn, panel);
   simulateItemDrag(btn2, panel);
@@ -140,16 +140,13 @@ add_task(function*() {
   removeNonOriginalButtons();
 
   let btn = document.getElementById("edit-controls");
-  let btn2 = document.getElementById("developer-button");
   let panel = document.getElementById(CustomizableUI.AREA_PANEL);
   let palette = document.getElementById("customization-palette");
   let placements = getAreaWidgetIds(CustomizableUI.AREA_PANEL);
 
-  placements.pop();
-  simulateItemDrag(btn2, palette);
-
   let placementsAfterAppend = placements.concat([placements.shift()]);
   simulateItemDrag(btn, panel);
+
   assertAreaPlacements(CustomizableUI.AREA_PANEL, placementsAfterAppend);
   ok(!CustomizableUI.inDefaultState, "Should no longer be in default state.");
   is(getVisiblePlaceholderCount(panel), 3, "Should have 3 visible placeholders before exiting");
@@ -157,8 +154,6 @@ add_task(function*() {
   yield endCustomizing();
   yield startCustomizing();
   is(getVisiblePlaceholderCount(panel), 3, "Should have 3 visible placeholders after re-entering");
-
-  simulateItemDrag(btn2, panel);
 
   let zoomControls = document.getElementById("zoom-controls");
   simulateItemDrag(btn, zoomControls);
@@ -177,9 +172,9 @@ add_task(function*() {
   let numPlaceholders = -1;
 
   if (isInDevEdition()) {
-    numPlaceholders = 3;
+    numPlaceholders = 1;
   } else {
-    numPlaceholders = 2;
+    numPlaceholders = 3;
   }
 
   let panel = document.getElementById(CustomizableUI.AREA_PANEL);

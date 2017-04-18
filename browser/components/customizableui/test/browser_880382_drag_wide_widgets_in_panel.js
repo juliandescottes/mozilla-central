@@ -22,7 +22,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -51,7 +50,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -78,7 +76,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -104,7 +101,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -134,7 +130,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -164,7 +159,6 @@ add_task(function*() {
                                "find-button",
                                "preferences-button",
                                "add-ons-button",
-                               "developer-button",
                                "sync-button",
                                "webcompat-reporter-button"
                               ];
@@ -206,7 +200,6 @@ add_task(function*() {
                                "find-button",
                                "preferences-button",
                                "add-ons-button",
-                               "developer-button",
                                "sync-button",
                                "webcompat-reporter-button"
                               ];
@@ -245,7 +238,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -272,7 +264,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -302,7 +293,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -332,7 +322,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button"
                             ];
@@ -361,7 +350,6 @@ add_task(function* editControlsToPanelEmptySpace() {
                              "preferences-button",
                              "add-ons-button",
                              "edit-controls",
-                             "developer-button",
                              "sync-button",
                             ];
   removeNonReleaseButtons(placementsAfterMove);
@@ -394,7 +382,6 @@ add_task(function*() {
                              "find-button",
                              "preferences-button",
                              "add-ons-button",
-                             "developer-button",
                              "sync-button",
                              "webcompat-reporter-button",
                             ];
@@ -444,7 +431,6 @@ add_task(function* editControlsToPanelPlaceholders() {
                                "preferences-button",
                                "add-ons-button",
                                "edit-controls",
-                               "developer-button",
                               ];
     removeNonReleaseButtons(placementsAfterMove);
     simulateItemDrag(editControls, placeholder);
@@ -493,7 +479,6 @@ add_task(function*() {
                              "preferences-button",
                              "add-ons-button",
                              "edit-controls",
-                             "developer-button",
                             ];
   removeNonReleaseButtons(placementsAfterMove);
   simulateItemDrag(editControls, target);

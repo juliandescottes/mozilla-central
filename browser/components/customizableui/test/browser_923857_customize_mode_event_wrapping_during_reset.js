@@ -7,12 +7,12 @@
 // Customize mode reset button should revert correctly
 add_task(function*() {
   yield startCustomizing();
-  let devButton = document.getElementById("developer-button");
+  let prefsButton = document.getElementById("preferences-button");
   let downloadsButton = document.getElementById("downloads-button");
   let searchBox = document.getElementById("search-container");
   let palette = document.getElementById("customization-palette");
-  ok(devButton && downloadsButton && searchBox && palette, "Stuff should exist");
-  simulateItemDrag(devButton, downloadsButton);
+  ok(prefsButton && downloadsButton && searchBox && palette, "Stuff should exist");
+  simulateItemDrag(prefsButton, downloadsButton);
   simulateItemDrag(searchBox, palette);
   yield gCustomizeMode.reset();
   ok(CustomizableUI.inDefaultState, "Should be back in default state");

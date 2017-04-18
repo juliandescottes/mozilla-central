@@ -33,9 +33,8 @@ add_task(function* testPanelPlaceholders() {
   let expectedPlaceholders = 1;
   if (isInDevEdition()) {
     expectedPlaceholders += 1;
-  } else if (isInNightly()) {
-    expectedPlaceholders += 2;
   }
+
   is(panel.querySelectorAll(".panel-customization-placeholder").length, expectedPlaceholders, "The number of placeholders should be correct.");
   CustomizableUI.createWidget({id: kTestWidget2, label: "Pretty label", tooltiptext: "Pretty tooltip", defaultArea: CustomizableUI.AREA_PANEL});
   let elem = document.getElementById(kTestWidget2);

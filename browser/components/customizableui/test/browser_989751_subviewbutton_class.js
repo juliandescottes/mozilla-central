@@ -53,7 +53,6 @@ function checkSubviewButtonClass(menuId, buttonId, subviewId) {
   };
 }
 
-add_task(checkSubviewButtonClass("menuWebDeveloperPopup", "developer-button", "PanelUI-developerItems"));
 add_task(checkSubviewButtonClass("viewSidebarMenu", "sidebar-button", "PanelUI-sidebarItems"));
 
 registerCleanupFunction(function() {

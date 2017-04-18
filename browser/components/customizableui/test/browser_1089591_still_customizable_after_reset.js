@@ -4,17 +4,17 @@
 add_task(function* () {
   yield startCustomizing();
   let historyButton = document.getElementById("wrapper-history-panelmenu");
-  let devButton = document.getElementById("wrapper-developer-button");
+  let prefsButton = document.getElementById("wrapper-preferences-button");
 
-  ok(historyButton && devButton, "Draggable elements should exist");
-  simulateItemDrag(historyButton, devButton);
+  ok(historyButton && prefsButton, "Draggable elements should exist");
+  simulateItemDrag(historyButton, prefsButton);
   yield gCustomizeMode.reset();
   ok(CustomizableUI.inDefaultState, "Should be back in default state");
 
   historyButton = document.getElementById("wrapper-history-panelmenu");
-  devButton = document.getElementById("wrapper-developer-button");
-  ok(historyButton && devButton, "Draggable elements should exist");
-  simulateItemDrag(historyButton, devButton);
+  prefsButton = document.getElementById("wrapper-preferences-button");
+  ok(historyButton && prefsButton, "Draggable elements should exist");
+  simulateItemDrag(historyButton, prefsButton);
 
   yield endCustomizing();
 });
