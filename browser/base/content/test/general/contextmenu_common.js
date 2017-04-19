@@ -283,6 +283,7 @@ function* test_contextmenu(selector, menuItems, options = {}) {
       let {onSpellCheck} =
         Cu.import("resource://testing-common/AsyncSpellCheckTestHelper.jsm",
                   {});
+
       let element = content.document.querySelector(contentSelector);
       yield new Promise(resolve => onSpellCheck(element, resolve));
       info("Spell check running");
@@ -306,7 +307,9 @@ function* test_contextmenu(selector, menuItems, options = {}) {
   }
 
   if (menuItems) {
-    if (Services.prefs.getBoolPref("devtools.inspector.enabled")) {
+    let DevToolsProvider = Cu.import("resource://gre/modules/DevToolsProvider.jsm", {});
+    if (DevToolsProvider.gDevTools.isInstalled()
+          && Services.prefs.getBoolPref("devtools.inspector.enabled")) {
       let inspectItems = ["---", null,
                           "context-inspect", true];
       menuItems = menuItems.concat(inspectItems);
