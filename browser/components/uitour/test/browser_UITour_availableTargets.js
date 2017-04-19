@@ -4,7 +4,6 @@ var gTestTab;
 var gContentAPI;
 var gContentWindow;
 
-var hasWebIDE = Services.prefs.getBoolPref("devtools.webide.widget.enabled");
 var hasPocket = Services.prefs.getBoolPref("extensions.pocket.enabled");
 
 requestLongerTimeout(2);
@@ -21,7 +20,6 @@ add_UITour_task(function* test_availableTargets() {
     "customize",
     "help",
     "home",
-    "devtools",
       ...(hasPocket ? ["pocket"] : []),
     "privateWindow",
     "quit",
@@ -29,8 +27,7 @@ add_UITour_task(function* test_availableTargets() {
     "search",
     "searchIcon",
     "trackingProtection",
-    "urlbar",
-      ...(hasWebIDE ? ["webide"] : [])
+    "urlbar"
   ]);
 
   ok(UITour.availableTargetsCache.has(window),
@@ -49,7 +46,6 @@ add_UITour_task(function* test_availableTargets_changeWidgets() {
     "backForward",
     "customize",
     "help",
-    "devtools",
     "home",
       ...(hasPocket ? ["pocket"] : []),
     "privateWindow",
@@ -58,8 +54,7 @@ add_UITour_task(function* test_availableTargets_changeWidgets() {
     "search",
     "searchIcon",
     "trackingProtection",
-    "urlbar",
-      ...(hasWebIDE ? ["webide"] : [])
+    "urlbar"
   ]);
 
   ok(UITour.availableTargetsCache.has(window),
@@ -84,14 +79,12 @@ add_UITour_task(function* test_availableTargets_exceptionFromGetTarget() {
     "customize",
     "help",
     "home",
-    "devtools",
       ...(hasPocket ? ["pocket"] : []),
     "privateWindow",
     "quit",
     "readerMode-urlBar",
     "trackingProtection",
-    "urlbar",
-      ...(hasWebIDE ? ["webide"] : [])
+    "urlbar"
   ]);
 
   CustomizableUI.reset();
