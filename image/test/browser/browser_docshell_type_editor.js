@@ -7,7 +7,7 @@ const SIMPLE_HTML = "data:text/html,<html><head></head><body></body></html>";
 // The following URI is *not* accessible to content, hence loading that URI
 // from an unprivileged site should be blocked. If docshell is of appType
 // APP_TYPE_EDITOR however the load should be allowed.
-// >> chrome://devtools/content/framework/dev-edition-promo/dev-edition-logo.png
+// >> chrome://mozapps/skin/places/defaultFavicon.png
 
 add_task(function* () {
   info("docshell of appType APP_TYPE_EDITOR can access privileged images.");
@@ -44,7 +44,7 @@ add_task(function* () {
           resolve();
         }
         doc.body.appendChild(image);
-        image.src = "chrome://devtools/content/framework/dev-edition-promo/dev-edition-logo.png";
+        image.src = "chrome://mozapps/skin/places/defaultFavicon.png";
       });
     });
   });
@@ -85,7 +85,7 @@ add_task(function* () {
           resolve();
         }
         doc.body.appendChild(image);
-        image.src = "chrome://devtools/content/framework/dev-edition-promo/dev-edition-logo.png";
+        image.src = "chrome://mozapps/skin/places/defaultFavicon.png";
       });
     });
   });
