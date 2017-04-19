@@ -11,13 +11,11 @@ const { Cc, Ci, CC, Cu } = require('chrome');
 const systemPrincipal = CC('@mozilla.org/systemprincipal;1', 'nsIPrincipal')();
 const scriptLoader = Cc['@mozilla.org/moz/jssubscript-loader;1'].
                      getService(Ci.mozIJSSubScriptLoader);
+const { addContentGlobal, removeContentGlobal } = Cu.import("resource://gre/modules/event-emitter.js", {});
+
 const self = require('sdk/self');
 const { getTabId } = require('../tabs/utils');
 const { getInnerId } = require('../window/utils');
-
-const { devtools } = Cu.import("resource://devtools/shared/Loader.jsm", {});
-const { require: devtoolsRequire } = devtools;
-const { addContentGlobal, removeContentGlobal } = devtoolsRequire("devtools/server/content-globals");
 
 /**
  * Make a new sandbox that inherits given `source`'s principals. Source can be
